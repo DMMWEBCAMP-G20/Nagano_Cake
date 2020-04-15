@@ -8,20 +8,15 @@
 		<th>ジャンル</th>
 		<th>ステータス</th>
 	</tr>
-            <tbody>
-          	<% @products.each do |product| %>
-              <tr>
-           
-                
-                <td><%= product.name %></td>
-                
-                <td><%= product.explanatory %></td>
-                
-                <td><%= product.price %></td>
-
-
-
-              </tr>
-            <% end %>
+    <tbody>
+    <% @products.each do |product| %>
+      <tr>
+        <td><%= product.name %></td>
+        <td><%= product.explanatory %></td>
+        <td><%= product.price %></td>
+        <td><%= product.genre.is_active_i18n %></td>
+        <td><%= product.is_sales_status_i18n %></td>
+      </tr>
+    <% end %>
       </tbody>
   </table>
