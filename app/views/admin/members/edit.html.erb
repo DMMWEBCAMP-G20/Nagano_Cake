@@ -1,0 +1,46 @@
+<div class="body">
+  <div class="container">
+    <div class="row">
+      <div class="col-xs-1">
+      </div>
+      <div class="col-xs-10">
+        <h4>会員編集画面</h4>
+        <table class="table table-striped">
+          <thead>
+            <tr>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody>
+              <tr>
+                <%= form_for(@member) do |f| %>
+                  <td>会員ID</td>
+                  <td><%= @member.id %></td>
+                  <td>氏名</td>
+                  <%= f.text_field :first_name, autofocus: true %>
+                  <%= f.text_field :last_name, autofocus: true %>
+                  <td>フリガナ</td>
+                  <%= f.text_field :reading_first_name, autofocus: true %>
+                  <%= f.text_field :reading_last_name, autofocus: true %>
+                  <td>郵便番号</td>
+                  <%= f.text_field :postal_code, autofocus: true %>
+                  <td>住所</td>
+                  <%= f.text_field :address, autofocus: true %>
+                  <td>電話番号</td>
+                  <%= f.text_field :phone_number, autofocus: true %>
+                  <td>メールアドレス</td>
+                  <%= f.email_field :email, autofocus: true %>
+                  <td>会員ステータス</td>
+                  <%= f.radio_button :is_active, :enable %>有効
+                  <%= f.radio_button :is_active, :disable %>無効
+                <% end %>
+                  <td><%= link_to "変更を保存する", admin_members_update_path(@member.id),class:"btn-sm btn-success" %></td>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
+      </div>
+      <div class="col-xs-1"></div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,33 @@
+
+<div class="body">
+	<div class="container">
+		<div class="row">
+			<div class="col-xs-3">
+				<h4>会員一覧画面</h4>
+			</div>
+			<div class="col-xs-6">
+				<table class="table table-striped">
+					<thead>
+						<tr>
+							<th>会員ID</th>
+							<th>氏名</th>
+							<th>メールアドレス</th>
+							<th>ステータス</th>
+						</tr>
+					</thead>
+					<tbody>
+						<% @members.each do |member| %>
+							<tr>
+								<td><%= member_id %><%= genre.is_active_i18n %></td>
+								<td><%= link_to member.name, admin_members_show_path(member.id) %></td>
+								<td><%= member.address %></td>
+								<td><%= member.name %></td>
+							</tr>
+						<% end %>
+					</tbody>
+				</table>
+			</div>
+			<div class="col-xs-3"></div>
+		</div>
+	</div>
+</div>
