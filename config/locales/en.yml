@@ -31,3 +31,10 @@
 
 en:
   hello: "Hello world"
+
+ja:
+  enums:
+    genre:
+      is_active:
+        enable: 有効
+        disable: 無効

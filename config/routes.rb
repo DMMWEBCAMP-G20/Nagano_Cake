@@ -17,7 +17,7 @@ Rails.application.routes.draw do
   end
 
   resources :products, only: [:index, :show]
-  resources :genres, only: [:new, :create, :index, :edit, :update]
+  resources :genres, only: [:new, :create, :index, :edit, :update, :destroy]
   resources :cart_items, only: [:new, :create, :show, :edit, :update, :destroy]
   resources :orders, only: [:new, :create, :index, :show]
   resources :order_products, only: [:show]
