@@ -1,21 +1,19 @@
 class OrdersController < ApplicationController
+  def new
+  end
 
-	def new
-	end
+  def create
+  end
 
-	def create
-	end
+  def confilm
+  end
 
-	def confilm
-	end
+  def thanks
+  end
 
-	def thanks
-	end
+  def index
+  end
 
-	def index
-	end
-
-	def show
-	end
-
+  def show
+  end
 end

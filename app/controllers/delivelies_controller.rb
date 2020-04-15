@@ -1,4 +1,4 @@
-class GenresController < ApplicationController
+class DeliveliesController < ApplicationController
   def new
   end
 
@@ -12,5 +12,8 @@ class GenresController < ApplicationController
   end
 
   def update
+  end
+
+  def destroy
   end
 end
