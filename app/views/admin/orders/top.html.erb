@@ -38,7 +38,7 @@
 
  <nav>
     <ul>
-      <% if member_signed_in? %>
+      <% if admin_signed_in? %>
         <li>管理者</li>
         <li><%= link_to "ログアウト", destroy_admin_session_path, method: :delete %></li>
       <% else %>
