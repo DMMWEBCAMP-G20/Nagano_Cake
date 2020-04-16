@@ -7,9 +7,9 @@ class Admin::ProductsController < ApplicationController
   def create
     @product = Product.new(product_params)
     if @product.save
-      redirect_to admin_products_path
+      redirect_to admin_product_path(@product)
     else
-      @products = Product.all
+      @products = Product.all.order(id: :desc)
       render :index
     end
   end
@@ -24,12 +24,13 @@ class Admin::ProductsController < ApplicationController
 
   def edit
     @product = Product.find(params[:id])
+    @genres = Genre.all
   end
 
     def update
     @product = Product.find(params[:id])
     if @product.update(product_params)
-      redirect_to admin_product_path(@puroduct)
+      redirect_to admin_product_path(@product)
     else
       render :edit
     end
