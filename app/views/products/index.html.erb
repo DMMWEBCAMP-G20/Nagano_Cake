@@ -1,0 +1,22 @@
+
+<p>ジャンル検索</p>
+	<% @genres.each do |genre| %>
+		<%= form_tag(products_path, method: :get) do %>
+			<%= hidden_field_tag :i, genre.id %>
+			<%= submit_tag genre.name %>
+		<% end %>
+	<% end %>
+
+
+
+<h1>商品一覧</h1>
+<table class="table">
+	<% @products.each do |product| %>
+	<tr>
+		<td><%= attachment_image_tag product, :image, :fill, 30, 30, format: 'jpeg', fallback: "no_image.jpg",:size =>'30x30' %>
+		</td>
+		<td><%= product.name %></td>
+		<td><%= product.price %></td>
+	</tr>
+	<% end %>
+</table>
