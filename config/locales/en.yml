@@ -31,3 +31,14 @@
 
 en:
   hello: "Hello world"
+
+ja:
+  enums:
+    genre:
+      is_active:
+        enable: 有効
+        disable: 無効
+    product:
+      is_sales_status:
+        sale: 販売中
+        sold_out: 売り切れ
