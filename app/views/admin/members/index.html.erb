@@ -18,12 +18,13 @@
 					<tbody>
 						<% @members.each do |member| %>
 							<tr>
-								<td><%= member_id %><%= genre.is_active_i18n %></td>
-								<td><%= link_to member.name, admin_members_show_path(member.id) %></td>
-								<td><%= member.address %></td>
-								<td><%= member.name %></td>
+								<td><%= member.id %></td>
+								<td><%= link_to member.first_name, admin_member_path(member.id) %></td>
+								<td><%= member.email %></td>
+								<td><%= member.is_active_i18n %></td>
 							</tr>
 						<% end %>
+						<%= paginate @members, class: "paginate" %>
 					</tbody>
 				</table>
 			</div>

@@ -42,3 +42,7 @@ ja:
       is_sales_status:
         sale: 販売中
         sold_out: 売り切れ
+    member:
+      is_active:
+        enable: 有効
+        disable: 無効
