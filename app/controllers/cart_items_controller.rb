@@ -1,6 +1,11 @@
 class CartItemsController < ApplicationController
-  def new
-    @cart_item = CartItem.new
-    @products = Product.all
-  end
+  def create
+    product = Product.find(params[:id])
+    if @cart_item.blank?
+      @cart_item = cart_items.new(product_id: product.id)
+    end
+
+    def show
+      @cart_item = CartItem.find(params[:id])
+    end
 end
