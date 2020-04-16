@@ -1,12 +1,17 @@
 Rails.application.routes.draw do
-  devise_for :admins
-  devise_for :members
-
   root 'homes#top'
   get 'about' => 'homes#about'
   get 'empty' => 'cart_items#empty'
   get 'confirm' => 'orders#confirm'
   get 'thanks' => 'orders#thanks'
+
+  devise_for :admins, controllers: {
+    sessions:      'admins/sessions',
+  }
+  devise_for :members, controllers: {
+    sessions:      'members/sessions',
+    registrations: 'members/registrations'
+  }
 
   resources :products, only: [:index, :show]
   resources :genres, only: [:new, :create, :index, :edit, :update, :destroy]
