@@ -1,4 +1,5 @@
 class ProductsController < ApplicationController
+  
   def index
   	@genres  = Genre.all
   	if params[:i]
@@ -9,5 +10,8 @@ class ProductsController < ApplicationController
   end
 
   def show
+  end
+
+  def edit
   end
 end

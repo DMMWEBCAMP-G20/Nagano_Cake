@@ -1,0 +1,56 @@
+<div class="body">
+  <div class="container">
+    <div class="row">
+      <div class="col-xs-1">
+      </div>
+      <div class="col-xs-10">
+        <h4>会員編集画面</h4>
+        <%= form_with model: @member,url:admin_member_path(@member.id),local: true do |f| %>
+        <table class="table table-striped">
+          <thead>
+            <tr>
+              <th></th>
+              <th></th>
+              <th></th>
+            </tr>
+            <tr>
+              <th>会員ID</th>
+              <th></th>
+            </tr>
+            <tr>
+              <th>氏名</th>
+              <th><%= f.text_field :first_name, autofocus: true %><%= f.text_field :last_name, autofocus: true %></th>
+            </tr>
+            <tr>
+              <th>フリガナ</th>
+              <th><%= f.text_field :reading_first_name, autofocus: true %><%= f.text_field :reading_last_name, autofocus: true %></th>
+            </tr>
+            <tr>
+              <th>郵便番号</th>
+              <th><%= f.text_field :postal_code, autofocus: true %></th>
+            </tr>
+            <tr>
+              <th>住所</th>
+              <th><%= f.text_field :address, autofocus: true %></th>
+            </tr>
+            <tr>
+              <th>電話番号</th>
+              <th><%= f.text_field :phone_number, autofocus: true %></th>
+            </tr>
+            <tr>
+              <th>メールアドレス</th>
+              <th><%= f.email_field :email, autofocus: true %></th>
+            </tr>
+            <tr>
+              <th><%= f.radio_button :is_active, :enable %>有効<%= f.radio_button :is_active, :disable %>無効</th>
+            </tr>
+            <%= f.submit "変更を保存する", class:"btn-sm btn-success" %>
+            <% end %>
+          </thead>
+        </table>
+
+      </div>
+      <div class="col-xs-1"></div>
+    </div>
+  </div>
+</div>
