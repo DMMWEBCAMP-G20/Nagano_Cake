@@ -17,9 +17,9 @@
 						<% @order_products.each do |order_product| %>
 							<tr>
 								<td><%= link_to order_product.created_at, admin_order_products_path(order_product.id) %></td>
-								<td><%= order_product_id %></td>
+								<td><%= order_product.name %></td>
 								<td><%= order_product_quantity %></td>
-								<td></td>
+								<td><%= order_product.order.order_status_i18n %></td>
 							</tr>
 						<% end %>
 					</tbody>
@@ -28,3 +28,4 @@
 			<div class="col-xs-2"></div>
 		</div>
 	</div>
+</div>

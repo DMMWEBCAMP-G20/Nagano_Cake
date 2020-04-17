@@ -45,4 +45,18 @@ ja:
     member:
       is_active:
         enable: 有効
-        disable: 無効
+        disable: 退会済み
+    order:
+      order_status:
+        waiting_payment: 入金待ち
+        payment_confirmation: 入金確認
+        production: 製作中
+        preparing_shipping: 発送準備中
+        shipped: 発送済
+    order_product:
+      production_status:
+        cannot_strat: 着手不可
+        awaiting_production: 制作待ち
+        production: 製作中
+        production_completed: 制作完了
+

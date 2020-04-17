@@ -42,7 +42,7 @@
               <th><%= f.email_field :email, autofocus: true %></th>
             </tr>
             <tr>
-              <th><%= f.radio_button :is_active, :enable %>有効<%= f.radio_button :is_active, :disable %>無効</th>
+              <th><%= f.radio_button :is_active, :enable %>有効<%= f.radio_button :is_active, :disable %>退会済み</th>
             </tr>
             <%= f.submit "変更を保存する", class:"btn-sm btn-success" %>
             <% end %>
