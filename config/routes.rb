@@ -14,12 +14,13 @@ Rails.application.routes.draw do
   }
 
   resources :members, only: [:show, :edit]
+  get "/member/:id/hide" => "members#hide", as: 'member_hide'
   resources :products, only: [:index, :show]
   resources :genres, only: [:new, :create, :index, :edit, :update, :destroy]
   resources :cart_items, only: [:new, :create, :show, :edit, :update, :destroy]
   resources :orders, only: [:new, :create, :index, :show]
-  resources :order_products, only: [:show]
-  resources :deliveries, only: [:new, :create, :index, :edit, :update, :destroy]
+  resources :order_products, only: [:index, :show]
+  resources :deliveries
 
   namespace :admin do
     resources :members, only: [:index, :show, :edit, :update]

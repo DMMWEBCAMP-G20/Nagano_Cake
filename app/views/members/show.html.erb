@@ -1,0 +1,57 @@
+<h3>マイページ</h3>
+<br>
+<div>
+  <span><strong>登録情報</strong></span>
+  <span><%= link_to '編集する', edit_member_path(current_member.id), class: "btn btn-primary" %></span>
+  <span><%= link_to 'パスワードを変更する', edit_member_password_path, class: "btn btn-primary" %></span>
+</div>
+
+<br>
+
+<table border=1 width=500 >
+
+<tr>
+	  <th width="10"><span>氏名</span></th>
+		<th width="90"><span>チャカ</span></th>
+</tr>
+
+<tr>
+	  <th><span>チャカ</span></th>
+		<th><span>チャカ</span></th>
+</tr>
+
+<tr>
+	  <th><span>郵便番号</span></th>
+		<th><span><%= @member.postal_code %></span></th>
+</tr>
+
+<tr>
+	  <th><span>住所</span></th>
+		<th><span><%= @member.address %></span></th>
+</tr>
+
+<tr>
+	  <th><span>電話番号</span></th>
+		<th><span><%= @member.phone_number %></span></th>
+</tr>
+
+<tr>
+	  <th><span>メールアドレス</span></th>
+		<th><span><%= @member.email %></span></th>
+</tr>
+
+</table>
+
+<br>
+
+<div>
+ <span>配送先</span>
+ <span><%= link_to '一覧を見る', delivery_path(current_member.id), class: "btn btn-primary" %></span>
+</div>
+
+<br>
+
+<div>
+ <span>注文履歴</span>
+ <span><%= link_to '一覧を見る', order_product_path(current_member.id), class: "btn btn-primary" %></span>
+</div>
