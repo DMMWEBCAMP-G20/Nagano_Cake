@@ -1,0 +1,57 @@
+<h1>登録情報変更</h1>
+
+<table>
+ <span>名前</span>
+ <%= form_for(@member) do |f| %>
+ <span>(姓)</span>
+ <%= f.text_field :first_name, value:@member.first_name %>
+ <span>(名)　</span>
+ <%= f.text_field :last_name, value:@member.last_name %>
+ <% end %>
+</table>
+
+<table>
+ <span>フリガナ</span>
+ <%= form_for(@member) do |f| %>
+ <span>(セイ)</span>
+ <%= f.text_field :reading_first_name, value:@member.reading_first_name %>
+ <span>(メイ)</span>
+ <%= f.text_field :reading_last_name, value:@member.reading_last_name %>
+ <% end %>
+</table>
+
+<table>
+ <span>メールアドレス</span>
+ <%= form_for(@member) do |f| %>
+ <%= f.text_field :email, value:@member.email %>
+ <% end %>
+</table>
+
+<table>
+ <span>郵便番号(ハイフンなし</span>
+ <%= form_for(@member) do |f| %>
+ <%= f.text_field :postal_code, value:@member.postal_code %>
+ <% end %>
+</table>
+
+<table>
+ <span>住所</span>
+ <%= form_for(@member) do |f| %>
+ <%= f.text_field :address, value:@member.address, :size => "60*60" %>
+ <% end %>
+</table>
+
+<table>
+ <span>電話番号(ハイフンなし)</span>
+ <%= form_for(@member) do |f| %>
+ <%= f.text_field :phone_number, value:@member.phone_number %>
+ <% end %>
+</table>
+
+<br>
+
+<table>
+<button class="btn btn-primary" %>変更を保存する</button></span>
+<span><%= link_to '退会する', member_hide_path(current_member.id), class: "btn btn-danger" %></span>
+</table>
+
