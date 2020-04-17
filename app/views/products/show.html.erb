@@ -1,0 +1,14 @@
+<%= attachment_image_tag @product, :image, :size =>'150x120', fallback: "no_image.jpg" %>
+
+<p>商品名<%= @product.name %></p>
+
+<p>商品説明 <%= @product.explanatory %></p>
+
+<% taxed_price = @product.price.to_i * 1.1 %>
+<p>¥<%= taxed_price.round %>(税込)</p>
+
+<%= form_with model: @cart_item, url: cart_items_path do |f| %>
+  <%= hidden_field_tag :product_id, @product.id %>
+  <%= f.select :quantity, [['1', 1], ['2', 2], ['3', 3], ['4', 4], ['5', 5]], { include_blank: "数量選択" } %>
+  <%= f.submit "カートに入れる" %>
+<% end %>

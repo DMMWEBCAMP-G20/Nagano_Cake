@@ -3,7 +3,6 @@ class Product < ApplicationRecord
 
   has_many :cart_items, dependent: :destroy
   has_many :order_products, dependent: :destroy
-  has_many :orders, throught: :order_products
 
   attachment :image
 
