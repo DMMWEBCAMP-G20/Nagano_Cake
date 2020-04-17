@@ -1,14 +1,4 @@
 class CartItemsController < ApplicationController
-  # def create
-  #   product = Product.find(params[:product_id])
-  #   cart_item = CartItem.new
-  #   cart_item.member_id = current_member.id
-  #   cart_item.product_id = product.id
-  #   cart_item.quantity = params[:cart_item][:quantity]
-  #   cart_item.save
-  #   redirect_to cart_item_path(cart_item)
-  # end
-
   def create
     product = Product.find(params[:product_id])
     cart_item = CartItem.find_by(product_id: product.id)
