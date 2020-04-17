@@ -1,5 +1,4 @@
 class ProductsController < ApplicationController
-  
   def index
     @genres  = Genre.all
     if params[:i]
@@ -12,8 +11,5 @@ class ProductsController < ApplicationController
   def show
     @product = Product.find(params[:id])
     @cart_item = CartItem.new
-  end
-
-  def edit
   end
 end
