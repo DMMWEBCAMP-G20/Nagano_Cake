@@ -1,2 +1,53 @@
-<h1>Admin::OrderProducts#show</h1>
-<p>Find me in app/views/admin/order_products/show.html.erb</p>
+<h4>注文詳細画面</h4>
+
+<p>購入者</p><%= @order_product.order.name %>
+
+<p>配送先</p><%= @order_product.order.addess %>
+
+<p>支払い方法</p><%= @order_product.order.pay_type %>
+
+<p>注文ステータス</p>
+<%= form_with model: @order_product, url:admin_order_products_path,local: true do |f| %>
+	<%= f.select :order_status, Order.order_statuses.keys.map {|k| [I18n.t("enums.order.order_status.#{k}"), k]} %>
+
+	<%= f.submit '更新' %>
+
+<% end %>
+<div class="row">
+	<div class="col-xs-2"></div>
+		<div class="col-xs-6">
+			<table class="table table-striped">
+				<thead>
+					<tr>
+						<th>商品名</th>
+						<th>単価（税込）</th>
+						<th>数量</th>
+						<th>小計</th>
+						<th>制作ステータス</th>
+						<th></th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<% @order_products.each do |order_product| %>
+							<td><%= order_product.product.name %></td>
+							<td><%= oder_product.price %></td>
+							<td><%= order_product.quantity %></td>
+							<td><%= order_product.price * order_product.quantity %></td>
+							<td></td>
+						<% end %>
+					</tr>
+				</tbody>
+			</table>
+			<%= form_with model: @order_product, url:admin_order_products_path,local: true do |f| %>
+				<%= f.select :production_status, OrderProduct.production_status.keys.map {|k| [I18n.t("enums.order_product.production_status.#{k}"), k]} %>
+
+				<%= f.submit '更新' %>
+
+			<% end %>
+	<div class="col-xs-4">
+		<p>商品合計</p><%= @order_product.order.total_price %>
+		<p>送料</p><%= @order_product.order.postage %>
+		<p>請求金額合計</p><%= @order_product.order.total_price + @order_product.order.postage %>
+	</div>
+</div>

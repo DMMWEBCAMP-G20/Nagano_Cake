@@ -1,0 +1,66 @@
+<h1>注文情報確認</h1>
+
+<table class="table table-bordered">
+	<thead>
+		<tr>
+			<th>商品名</th>
+			<th>単価(税込)</th>
+			<th>数量</th>
+			<th>小計</th>
+		</tr>
+	</thead>
+	<tbody>
+    <% @cart_items.each do |cart_item| %>
+      <tr>
+        <td>
+          <%= attachment_image_tag cart_item.product, :image, :fill, 30, 30, fallback: "no-image-mini.jpg"  %>
+          <%= cart_item.product.name %>
+        </td>
+        <td>
+          <% taxed_price = cart_item.product.price * 1.1 %>
+          <%= taxed_price.round %>
+        </td>
+        <td><%= cart_item.quantity %></td>
+        <td>
+          <% taxed_total_price = taxed_price * cart_item.quantity %>
+          <%= taxed_total_price.round.to_s(:delimited) %>
+        </td>
+      </tr>
+    <% end %>
+	</tbody>
+</table>
+
+<table class="table table-bordered">
+	<tbody>
+      <tr>
+        <th>送料</th>
+        <th>800</th>
+      </tr>
+      <tr>
+        <th>商品合計</th>
+        <th>
+          <% @total_price = 0 %>
+          <% @cart_items.each do |cart_item| %>
+          <% @total_price += cart_item.product.price * cart_item.quantity %>
+          <% taxed_total_price = @total_price * 1.1 %>
+          <% @sum = taxed_total_price.round.to_s(:delimited) %>
+          <% end %>
+          <%= @sum %>
+        </th>
+      </tr>
+      <tr>
+        <th>請求金額</th>
+        <th>
+          <% @total_price = 0 %>
+          <% @cart_items.each do |cart_item| %>
+          <% @total_price += cart_item.product.price * cart_item.quantity %>
+          <% taxed_total_price = @total_price * 1.1 + 800 %>
+          <% @claim = taxed_total_price.round.to_s(:delimited) %>
+          <% end %>
+          <%= @claim %>
+        </th>
+      </tr>
+	</tbody>
+</table>
+
+<%= link_to "注文を確定する", confirm_path, method: :post, class:"btn btn-success" %>

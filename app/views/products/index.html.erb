@@ -1,4 +1,3 @@
-
 <p>ジャンル検索</p>
 	<% @genres.each do |genre| %>
 		<%= form_tag(products_path, method: :get) do %>
@@ -13,7 +12,10 @@
 <table class="table">
 	<% @products.each do |product| %>
 	<tr>
-		<td><%= attachment_image_tag product, :image, :fill, 30, 30, format: 'jpeg', fallback: "no_image.jpg",:size =>'30x30' %>
+		<td>
+      <%= link_to product_path(product) do %>
+        <%= attachment_image_tag product, :image, :fill, 30, 30, fallback: "no_image.jpg",:size =>'30x30' %>
+      <% end %>
 		</td>
 		<td><%= product.name %></td>
 		<td><%= product.price %></td>
