@@ -16,7 +16,10 @@ Rails.application.routes.draw do
     registrations: 'members/registrations'
   }
 
-  resources :members, only: [:show, :edit]
+
+  resources :members, only: [:show, :edit, :update]
+  get "/member/:id/hide" => "members#hide", as: 'member_hide'
+
   resources :products, only: [:index, :show]
   resources :genres, only: [:new, :create, :index, :edit, :update, :destroy]
   resources :cart_items, only: [:new, :create, :index, :edit, :update, :destroy]
