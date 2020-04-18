@@ -1,4 +1,4 @@
-class DeliveliesController < ApplicationController
+class DeliveriesController < ApplicationController
   def new
   end
 
@@ -21,3 +21,5 @@ class DeliveliesController < ApplicationController
   def destroy
   end
 end
+
+
