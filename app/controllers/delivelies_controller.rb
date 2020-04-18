@@ -1,4 +1,4 @@
-class DeliveliesController < ApplicationController
+class DeliveriesController < ApplicationController
   def new
   end
 
