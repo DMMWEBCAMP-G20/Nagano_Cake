@@ -3,8 +3,12 @@ class OrdersController < ApplicationController
     @order = Order.new
   end
 
+  def create
+  end
+
   def verification
     @cart_items = current_member.cart_items
+    @order_item = OrderItem.new
   end
 
   def confirm

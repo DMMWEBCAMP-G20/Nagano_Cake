@@ -29,9 +29,11 @@ before_action :authenticate_member!
   redirect_to deliveries_path
   end
 
+
   private
   def delivery_params
    params.require(:delivery).permit(:postal_code, :address, :name)
   end
 end
+
 
