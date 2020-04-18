@@ -1,0 +1,54 @@
+
+
+<h1>配送先登録/一覧</h1>
+
+<%= form_with model: @delivery, url: deliveries_path, local: true do |f| %>
+<table>
+	<span>郵便番号</span>
+	<%= f.text_field :postal_code %>
+</table>
+
+<table>
+	<span>住所　　</span>
+	<%= f.text_field :address %>
+</table>
+
+<table>
+<span>宛名　　</span>
+	<%= f.text_field :name %>
+</table>
+<br>
+　<%= f.submit "登録する", class: "btn btn-success" %>
+<% end %>
+
+
+
+<br>
+<div class="col-xs-8">
+<table class="table table-bordered">
+<thead>
+<tr>
+<td>郵便番号</td>
+<td>住所</td>
+<td>宛名</td>
+<td></td>
+</tr>
+</thead>
+
+<tbody>
+<% @deliveries.each do |delivery| %>
+<tr>
+<td><%= delivery.postal_code %></td>
+<td><%= delivery.address %></td>
+<td><%= delivery.name %></td>
+<td>
+<span><%= link_to "編集", edit_delivery_path(delivery), class: "btn-sm btn-primary" %></span>
+<span><%= link_to "削除", delivery_path(delivery), method: :delete, class: "btn-sm btn-danger" %></span>
+</td>
+</tr>
+<% end %>
+</tbody>
+</table>
+</div>
+
+

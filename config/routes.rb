@@ -17,7 +17,7 @@ Rails.application.routes.draw do
 
 
   resources :members, only: [:show, :edit, :update]
-  # get "/member/:id/hide" => "members#hide", as: 'member_hide'
+
   resources :products, only: [:index, :show]
   
   resources :genres, only: [:new, :create, :index, :edit, :update, :destroy]

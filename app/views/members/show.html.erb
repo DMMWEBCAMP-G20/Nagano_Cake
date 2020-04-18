@@ -12,12 +12,12 @@
 
 <tr>
 	  <th width="10"><span>氏名</span></th>
-		<th width="90"><span>チャカ</span></th>
+		<th width="90"><span><%= @member.first_name+@member.last_name %></span></th>
 </tr>
 
 <tr>
 	  <th><span>カナ</span></th>
-		<th><span>チャカ</span></th>
+		<th><span><%= @member.reading_first_name+@member.reading_last_name %></span></th>
 </tr>
 
 <tr>
@@ -46,7 +46,7 @@
 
 <div>
  <span>配送先</span>
- <span><%= link_to '一覧を見る', delivery_path(current_member.id), class: "btn btn-primary" %></span>
+ <span><%= link_to '一覧を見る', edit_delivery_path(current_member.id), class: "btn btn-primary" %></span>
 </div>
 
 <br>
