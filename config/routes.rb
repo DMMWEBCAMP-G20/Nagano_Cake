@@ -3,7 +3,8 @@ Rails.application.routes.draw do
   get 'about' => 'homes#about'
   get "/member/:id/hide" => "members#hide", as: 'member_hide'
   get 'empty' => 'cart_items#empty'
-  get 'confirm' => 'orders#confirm'
+  get 'verification' => 'orders#verification'
+  post 'confirm' => 'orders#confirm'
   get 'thanks' => 'orders#thanks'
 
   devise_for :admins, controllers: {
