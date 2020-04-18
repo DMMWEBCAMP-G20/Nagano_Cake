@@ -34,3 +34,4 @@ before_action :authenticate_member!
    params.require(:delivery).permit(:postal_code, :address, :name)
   end
 end
+
