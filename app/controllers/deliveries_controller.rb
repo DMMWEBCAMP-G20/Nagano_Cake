@@ -21,5 +21,3 @@ class DeliveriesController < ApplicationController
   def destroy
   end
 end
-
-
