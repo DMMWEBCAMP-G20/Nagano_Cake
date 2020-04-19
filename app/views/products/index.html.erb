@@ -1,13 +1,12 @@
 <div class="container">
   <div class="row">
     <div class="col-xs-3">
-						<%= form_with url: products_path, method: :get, local: true do |f| %>
-							<%= f.collection_select :i, Genre.all, :id, :name, :include_blank => "-------" %>
-							<%= f.submit "ジャンル検索" %>
-						<% end %>
-	</div>
-
-
+      <%= form_with url: products_path, method: :get, local: true do |f| %>
+        <%= f.collection_select :i, Genre.all, :id, :name, :include_blank => "-------" %>
+        <%= f.submit "ジャンル検索" %>
+      <% end %>
+    </div>
+    
 		<div class="col-xs-9">
 			<h1>商品一覧</h1>
 				<% @products.each do |product| %>
@@ -19,7 +18,7 @@
 					</td><br>
 					<td><%= product.name %></td><br>
 					<td><%= product.price %></td></div>
-				</tr>
+        </tr>
 				<% end %>
 		</div>
 	</div>

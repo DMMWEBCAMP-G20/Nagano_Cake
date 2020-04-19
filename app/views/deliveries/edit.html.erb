@@ -1,2 +1,23 @@
-<h1>Delivelies#edit</h1>
-<p>Find me in app/views/delivelies/edit.html.erb</p>
+<h1>配送先編集</h1>
+
+<%= form_for (@delivery) do |f| %>
+
+<table>
+<span>郵便番号</span>
+<span><%= f.text_field :postal_code, value:@delivery.postal_code %></span>
+</table>
+
+<table>
+<span>住所</span>
+<span><%= f.text_field :address, value:@delivery.address %></span>
+</table>
+
+<table>
+<span>宛名</span>
+<span><%= f.text_field :name, value:@delivery.name %></span>
+</table>
+
+<span><%= f.submit "編集する", class: "btn btn-primary" %></span>
+
+
+<% end %>
