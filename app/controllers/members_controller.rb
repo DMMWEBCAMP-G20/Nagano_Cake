@@ -1,14 +1,12 @@
 class MembersController < ApplicationController
+before_action :authenticate_member!
+before_action :correct_member
 
 	def show
 		@member = Member.find(params[:id])
 	end
 
 	def edit
-		@member = Member.find(params[:id])
-	end
-
-	def hide
 		@member = Member.find(params[:id])
 	end
 
@@ -21,7 +19,15 @@ class MembersController < ApplicationController
 	private
 
 	def member_params
-	 params.require(:member).permit(:first_name, :last_name, :reading_first_name, :reading_last_name, :phone_number)
+	 params.require(:member).permit(:first_name, :last_name, :reading_first_name, :reading_last_name, :postal_code, :address, :phone_number, :email,)
+	end
+
+	def correct_member
+ 	 @member = Member.find(params[:id])
+	if current_member == member
+	else
+   redirect_to member_path(current_member.id)
+	end
 	end
 
 end
