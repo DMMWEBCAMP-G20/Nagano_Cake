@@ -17,8 +17,8 @@
 						<% Order.all.each do |order| %>
 							<tr>
 								<td><%= link_to order.created_at, admin_order_path(order.id) %></td>
-								<td><%= order.member.first_name %><%= order.member.last_name %></td>
-								<td></td>
+								<td><%= order.member.full_name %></td>
+								<td><%= order.total_quantity %></td>
 								<td><%= order.order_status_i18n %></td>
 							</tr>
 						<% end %>

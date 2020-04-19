@@ -2,8 +2,8 @@
 	<div class="container">
 		<h4>注文履歴一覧</h4>
 		<div class="row">
-			<div class="col-xs-2"></div>
-			<div class="col-xs-8">
+			<div class="col-xs-1"></div>
+			<div class="col-xs-9">
 				<table class="table table-bordered">
 					<thead>
 						<tr>
@@ -19,15 +19,19 @@
 						<% @orders.each do |order| %>
 							<tr>
 								<td><%= order.created_at %></td>
-								<td><%= order.member.reading_first_name %></td>
-								<td><%= order.order_product.quantity %></td>
+								<td><%= order.postal_code %><br>
+									<%= order.address %><br>
+									<%= order.name %></td>
+								<td><%= order.order_products.name %></td>
+								<td><%= order.total_price + order.postage %></td>
 								<td><%= order.order_status_i18n %></td>
+								<td><%= link_to "表示する", order_path(order),class:"btn-sm btn-success" %></td>
 							</tr>
 						<% end %>
 					</tbody>
 				</table>
 			</div>
-			<div class="col-xs-2"></div>
+			<div class="col-xs-1"></div>
 		</div>
 	</div>
 </div>

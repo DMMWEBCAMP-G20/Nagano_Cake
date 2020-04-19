@@ -10,8 +10,8 @@ class ProductsController < ApplicationController
   end
 
   def show
-   
     @cart_item = CartItem.new
+    @product = Product.find(params[:id])
   end
   #     private
   # def genre_params
