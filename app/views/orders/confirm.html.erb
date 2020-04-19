@@ -55,13 +55,25 @@
           <% @cart_items.each do |cart_item| %>
           <% @total_price += cart_item.product.price * cart_item.quantity %>
           <% taxed_total_price = @total_price * 1.1 + 800 %>
-          <% @claim = taxed_total_price.round.to_s(:delimited) %>
+          <% @claim = taxed_total_price.round %>
           <% end %>
           <%= @claim %>
         </th>
       </tr>
 	</tbody>
 </table>
+
+<p>
+  支払い方法
+  <%= @order.pay_type %>
+</p>
+
+<p>
+  お届け先
+  <%= @order.postal_code %>
+  <%= @order.address %><br>
+  <%= @order.name %>
+</p>
 
 <%= form_with model: @order, url: orders_path, local: true do |f| %>
   <%= f.hidden_field :postal_code %>
