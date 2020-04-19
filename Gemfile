@@ -69,4 +69,4 @@ gem 'kaminari'
 gem 'bootstrap-sass'
 gem 'jquery-rails'
 gem 'devise'
-
+gem 'kaminari-bootstrap', '~> 3.0.1'
