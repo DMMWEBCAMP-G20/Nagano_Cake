@@ -14,11 +14,10 @@ Rails.application.routes.draw do
     registrations: 'members/registrations'
   }
 
-
   resources :members, only: [:show, :edit, :update]
-
+  get 'confirmation' =>'members#confirmation'
+  patch 'withdraw'  => 'members#withdraw'
   resources :products, only: [:index, :show]
-
   resources :genres, only: [:new, :create, :index, :edit, :update, :destroy]
   resources :cart_items, only: [:new, :create, :index, :edit, :update, :destroy]
   resources :orders, only: [:new, :create, :index, :show]

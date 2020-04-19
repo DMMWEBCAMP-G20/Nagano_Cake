@@ -9,7 +9,7 @@ before_action :authenticate_member!
   end
 
   def index
-  @deliveries = Delivery.all
+  @deliveries = current_member.deliveries
   @delivery = Delivery.new
   end
 
@@ -18,8 +18,8 @@ before_action :authenticate_member!
   end
 
   def update
-  delivery= Delivery.find(params[:id])
-  delivery.update(delivery_params)
+  @delivery= Delivery.find(params[:id])
+  @delivery.update(delivery_params)
   redirect_to deliveries_path
   end
 
