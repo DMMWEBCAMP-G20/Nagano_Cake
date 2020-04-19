@@ -63,4 +63,8 @@
 	</tbody>
 </table>
 
-<%= link_to "注文を確定する", confirm_path, method: :post, class:"btn btn-success" %>
+<%= form_with model:@order_item, url: confirm_path, method: :post %>
+    <%= hidden_field_tag :cart_item_id, cart_item.id %>
+    <%= hidden_field_tag :quantity, quantity %>
+  <%= f.submit "注文を確定する", class:"btn btn-success"  %>
+<% end %>

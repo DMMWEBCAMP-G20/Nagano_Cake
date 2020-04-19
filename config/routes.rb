@@ -1,7 +1,6 @@
 Rails.application.routes.draw do
   root 'homes#top'
   get 'about' => 'homes#about'
-  get "/member/:id/hide" => "members#hide", as: 'member_hide'
   get 'empty' => 'cart_items#empty'
   get 'verification' => 'orders#verification'
   post 'confirm' => 'orders#confirm'
@@ -18,9 +17,9 @@ Rails.application.routes.draw do
 
 
   resources :members, only: [:show, :edit, :update]
-  
-
+  # get "/member/:id/hide" => "members#hide", as: 'member_hide'
   resources :products, only: [:index, :show]
+
   resources :genres, only: [:new, :create, :index, :edit, :update, :destroy]
   resources :cart_items, only: [:new, :create, :index, :edit, :update, :destroy]
   resources :orders, only: [:new, :create, :index, :show]
