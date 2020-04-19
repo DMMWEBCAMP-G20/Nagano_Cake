@@ -5,14 +5,14 @@
 			<div class="col-xs-10">
 				<h4>注文詳細画面</h4>
 
-				<p>購入者</p><%= @order.member.first_name %><%= @order.member.last_name %>
+				<p>購入者</p><%= @order.member.full_name %>
 
 				<p>配送先</p><%= @order.postal_code %><%= @order.address %><br><%= @order.name %>
 
 				<p>支払い方法</p><%= @order.pay_type %>
 
 				<p>注文ステータス</p>
-				<%= form_with model: @order, url:admin_orders_path,local: true do |f| %>
+				<%= form_with model: @order, url:admin_order_path,local: true do |f| %>
 					<%= f.select :order_status, Order.order_statuses.keys.map {|k| [I18n.t("enums.order.order_status.#{k}"), k]} %>
 
 					<%= f.submit '更新' %>
@@ -23,7 +23,6 @@
 		<div class="row">
 			<div class="col-xs-1"></div>
 				<div class="col-xs-6">
-					<%= form_with model: @order_product, url:admin_order_products_path,local: true do |f| %>
 					<table class="table table-striped">
 						<thead>
 							<tr>
@@ -32,7 +31,6 @@
 								<th>数量</th>
 								<th>小計</th>
 								<th>制作ステータス</th>
-								<th></th>
 							</tr>
 						</thead>
 						<tbody>
@@ -42,13 +40,16 @@
 									<td><%= order_product.price %></td>
 									<td><%= order_product.quantity %></td>
 									<td><%= order_product.price * order_product.quantity %></td>
-									<td><%= f.select :production_status, OrderProduct.production_status.keys.map {|k| [I18n.t("enums.order_product.production_status.#{k}"), k]} %></td>
-									<td><%= f.submit '更新' %></td>
+									<td>
+										<%= form_with model: order_product, url:admin_order_product_path(order_product.id),method: :patch, local: true do |f| %>
+										<%= f.select :production_status, OrderProduct.production_statuses.keys.map {|k| [I18n.t("enums.order_product.production_status.#{k}"), k]} %>
+										<%= f.submit '更新' %>
+										<% end %>
+									</td>
 								<% end %>
 							</tr>
 						</tbody>
 					</table>
-					<% end %>
 				</div>
 			<div class="col-xs-4">
 				<p>商品合計 <%= @order.total_price %></p>
