@@ -1,22 +1,9 @@
 class Admin::OrderProductsController < ApplicationController
 
-	def index
-		@order_products = OrderProduct.all
-	end
-
-  def show
-  	@order_product = OrderProduct.find(params[:id])
-    @order_products = OrderProduct.all
-  end
-
-  def edit
-  	@order_product = OrderProduct.find(params[:id])
-  end
-
   def update
   	@order_product = OrderProduct.find(params[:id])
   	if @order_product.update(order_product_params)
-      redirect_to admin_order_products_path(@order_product.id)
+      redirect_to admin_order_path(@order_product.order.id)
     else
       render :show
     end
