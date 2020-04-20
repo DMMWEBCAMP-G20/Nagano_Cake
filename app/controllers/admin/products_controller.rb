@@ -7,7 +7,7 @@ class Admin::ProductsController < ApplicationController
   def create
     @product = Product.new(product_params)
     if @product.save
-      redirect_to admin_product_path(@product)
+      redirect_to admin_products_path
     else
       @products = Product.all.order(id: :desc)
       render :index
