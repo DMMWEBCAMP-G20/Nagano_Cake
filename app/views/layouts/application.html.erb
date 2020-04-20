@@ -10,6 +10,40 @@
   </head>
 
   <body>
+    <nav class="navbar navbar-default">
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbarEexample1">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="#">ながのケーキ</a>
+        </div>
+
+        <div class="collapse navbar-collapse" id="navbarEexample1">
+          <ul class="nav navbar-nav navbar-right">
+            <% if member_signed_in? %>
+              <p class="navbar-text">ようこそ <%= current_member.full_name %> さん !</p>
+              <li><%= link_to "マイページ", member_path(current_member) %></li>
+              <li><%= link_to "商品一覧", products_path %></li>
+              <li><%= link_to "カート", cart_items_path %></li>
+              <li><%= link_to "ログアウト", destroy_member_session_path, method: :delete %></li>
+            <% elsif admin_signed_in? %>
+              <li><%= link_to "商品一覧", products_path %></li>
+              <li><%= link_to "会員一覧", admin_members_path %></li>
+              <li><%= link_to "注文履歴一覧", admin_orders_path %></li>
+              <li><%= link_to "ジャンル管理", genre_path %></li>
+            <% else %>
+              <li><%= link_to "商品一覧", products_path %></li>
+              <li><%= link_to "新規登録", new_member_registration_path %></li>
+              <li><%= link_to "ログイン", new_member_session_path %></li>
+            <% end %>
+          </ul>
+        </div>
+      </div>
+    </nav>
 		<%= yield %>
   </body>
 </html>

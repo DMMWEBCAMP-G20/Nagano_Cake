@@ -1,68 +1,25 @@
-<div class="container">
-	<div class="row">
-		<nav class="navbar navbar-default">
-			<div class="container-fluid">
-				<div class="navbar-header">
-					<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbarEexample4">
-						<span class="sr-only">Toggle navigation</span>
-						<span class="icon-bar"></span>
-						<span class="icon-bar"></span>
-						<span class="icon-bar"></span>
-					</button>
-					<a class="navbar-brand" href="#">
-						　logo
-					</a>
-				</div>
-				<form class="navbar-form navbar-right">
-					<div class="collapse navbar-collapse" id="navbarEexample4">
-						<ul class="nav navbar-nav">
-							<%= link_to '商品一覧', admin_products_path, class: "btn btn-default" %>
-							<%= link_to '商品詳細', admin_products_path, class: "btn btn-default" %>
-						</ul>
-						<%= link_to 'ログイン', new_member_session_path, class: "btn btn-default" %>
-					</div>
-				</div>
-			</nav>
-			<div class="col-xs-3">
-				<%= form_with url: products_path, method: :get, local: true do |f| %>
-				<%= f.collection_select :i, Genre.all, :id, :name, :include_blank => "-------" %>
-				<%= f.submit "ジャンル検索" %>
-				<% end %>
-			</div>
-			<div class="col-xs-9">
-				<p>
-					ようこそ、NaganoCakeへ！<br>
-					このサイトは、ケーキ販売のECサイトになります。<br>
-					会員でない方も商品の閲覧はできますが、<br>
-					購入には会員登録が必要になります。
-				</p>
 
-				<h1>おすすめ商品</h1>
-				<% @products.each do |product| %>
-				<tr>
-					<div class="col-xs-3"><td>
-						<%= link_to product_path(product) do %>
-						<%= attachment_image_tag product, :image, :size =>'50x50', fallback: "no_image.jpg" %>
-						<% end %>
-					</td><br>
-					<td><%= product.name %></td><br>
-					<td><%= product.price %></td></div>
-				</tr>
-				<% end %>
-				<%= paginate @products %>
+<%= form_with url: products_path, method: :get, local: true do |f| %>
+  <%= f.collection_select :i, Genre.all, :id, :name, :include_blank => "-------" %>
+  <%= f.submit "ジャンル検索" %>
+<% end %>
 
-				<nav>
-					<ul>
-						<% if member_signed_in? %>
-						<li>ユーザー</li>
-						<li><%= link_to "ログアウト", destroy_member_session_path, method: :delete %></li>
-						<% else %>
-						<li><%= link_to "顧客新規登録", new_member_registration_path %></li>
-						<li><%= link_to "顧客ログイン", new_member_session_path %></li>
-						<% end %>
-					</ul>
-				</nav>
-			</div>
-		</div>
-	</div>
+<p>
+  ようこそ、NaganoCakeへ！<br>
+  このサイトは、ケーキ販売のECサイトになります。<br>
+  会員でない方も商品の閲覧はできますが、<br>
+  購入には会員登録が必要になります。
+</p>
+
+<h1>おすすめ商品</h1>
+<% @products.each do |product| %>
+  <tr>
+    <%= link_to product_path(product) do %>
+      <%= attachment_image_tag product, :image, :size =>'50x50', fallback: "no_image.jpg" %>
+    <% end %>
+    <%= product.name %>
+    <%= product.price %>
+  </tr>
+<% end %>
+<%= paginate @products %>
 

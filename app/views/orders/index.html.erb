@@ -22,7 +22,9 @@
 								<td><%= order.postal_code %><br>
 									<%= order.address %><br>
 									<%= order.name %></td>
-								<td><%= order.order_products.name %></td>
+								<td>
+                  
+                </td>
 								<td><%= order.total_price + order.postage %></td>
 								<td><%= order.order_status_i18n %></td>
 								<td><%= link_to "表示する", order_path(order),class:"btn-sm btn-success" %></td>

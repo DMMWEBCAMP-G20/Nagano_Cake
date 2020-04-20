@@ -3,7 +3,7 @@ class CartItemsController < ApplicationController
     product = Product.find(params[:product_id])
     cart_item = CartItem.find_by(product_id: product.id)
     if cart_item.blank?
-      cart_item = CartItem.new
+      cart_item = CartItem.new(cart_item_params)
       cart_item.member_id = current_member.id
       cart_item.product_id = product.id
       cart_item.quantity = params[:cart_item][:quantity].to_i
@@ -35,4 +35,9 @@ class CartItemsController < ApplicationController
     cart_items.destroy_all
     redirect_to cart_items_path
   end
+
+  private
+    def cart_item_params
+      params.require(:cart_item).permit(:member_id, :product_id, :quantity)
+    end
 end
