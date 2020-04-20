@@ -30,6 +30,12 @@ class OrdersController < ApplicationController
       @order.address = delivery.address
       @order.name = delivery.name
     elsif address == 3
+      new_delivery = Delivery.new
+      new_delivery.member_id = current_member.id
+      new_delivery.postal_code = params[:order][:postal_code]
+      new_delivery.address = params[:order][:address]
+      new_delivery.name = params[:order][:name]
+      new_delivery.save
     end
   end
 
@@ -49,8 +55,11 @@ class OrdersController < ApplicationController
       order_product.product_id = cart_item.product.id
       order_product.order_id = order.id
       order_product.production_status = 0
-      order_product.save!
+
+      order_product.save
+
     end
+
     current_member.cart_items.destroy_all
     redirect_to thanks_path
   end
