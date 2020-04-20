@@ -46,9 +46,9 @@
 					</table>
 				</div>
 			<div class="col-xs-4">
-				<p>商品合計 <%= @order.total_price %></p>
+				<p>商品合計 <%= @order.total_price - @order.postage %></p>
 				<p>送料 <%= @order.postage %></p>
-				<p>請求金額合計 <%= @order.total_price + @order.postage %></p>
+				<p>請求金額合計 <%= @order.total_price + @order.postage - @order.postage %></p>
 			</div>
 		</div>
 	</div>
