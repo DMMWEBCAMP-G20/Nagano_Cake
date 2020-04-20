@@ -55,7 +55,9 @@ class OrdersController < ApplicationController
       order_product.product_id = cart_item.product.id
       order_product.order_id = order.id
       order_product.production_status = 0
+
       order_product.save
+
     end
 
     current_member.cart_items.destroy_all

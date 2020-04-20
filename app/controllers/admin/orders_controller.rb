@@ -18,11 +18,30 @@ class Admin::OrdersController < ApplicationController
 
   def update
     @order = Order.find(params[:id])
-    if @order.update(order_params)
-      redirect_to admin_orders_path(@order)
-    else
-      render :show
+    @order.update(order_params)
+    if @order.order_status == "payment_confirmation"
+      @order.order_products.each do |order_product|
+        order_product.production_status = "waiting_production"
+        order_product.save
+      end
+    elsif @order.order_status == "production"
+      @order.order_products.each do |order_product|
+        order_product.production_status = "production"
+        order_product.save
+      end
+    elsif @order.order_status == "preparing_shipping"
+      @order.order_products.each do |order_product|
+        order_product.production_status = "production_completed"
+        order_product.save
+      end
+    else @order.order_status == "shipped"
+      @order.order_products.each do |order_product|
+        order_product.production_status = "production_completed"
+        order_product.save
+      end
     end
+    redirect_to admin_order_path(@order)
+
   end
 
   private

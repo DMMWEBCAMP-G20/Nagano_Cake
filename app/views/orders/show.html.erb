@@ -29,7 +29,9 @@
 				<table class="table table-striped">
 					<tr>
 						<th>商品合計</th>
-						<td><%= @order.total_price %></td>
+						<td><% tax_excluded_amount = @order.total_price - @order.postage %>
+							<%= tax_excluded_amount.round %>
+						</td>
 					</tr>
 					<tr>
 						<th>配送料</th>
@@ -37,7 +39,7 @@
 					</tr>
 					<tr>
 						<th>ご請求料金</th>
-						<td><%= @order.total_price + @order.postage %></td>
+						<td><%= @order.total_price %></td>
 					</tr>
 				</table>
 			</div>
@@ -60,9 +62,11 @@
           <% @order.order_products.each do |order_product| %>
             <tr>
               <td><%= order_product.name %></td>
-              <td><%= order_product.price %></td>
+              <td><% taxed_price = order_product.price * 1.1 %>
+         					<%= taxed_price.round %>
+              </td>
               <td><%= order_product.quantity %></td>
-              <td><%= order_product.price * order_product.quantity %></td>
+              <td><%= taxed_price.round * order_product.quantity %></td>
             </tr>
           <% end %>
 					</tbody>

@@ -56,7 +56,7 @@ ja:
     order_product:
       production_status:
         cannot_strat: 着手不可
-        awaiting_production: 制作待ち
+        waiting_production: 制作待ち
         production: 製作中
         production_completed: 制作完了
 

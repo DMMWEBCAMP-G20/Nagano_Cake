@@ -2,11 +2,17 @@ class Admin::OrderProductsController < ApplicationController
 
   def update
   	@order_product = OrderProduct.find(params[:id])
-  	if @order_product.update(order_product_params)
-      redirect_to admin_order_path(@order_product.order.id)
-    else
-      render :show
+  	@order_product.update(order_product_params)
+    order = @order_product.order
+    if @order_product.production_status == "production"
+        order.order_status = "production"
+        order.save
     end
+    if @order_product.production_status == "production_completed"
+        order.order_status = "preparing_shipping"
+        order.save
+    end
+    redirect_to admin_order_path(@order_product.order.id)
   end
   private
     def order_product_params
