@@ -82,6 +82,6 @@
   <%= f.hidden_field :pay_type %>
   <%= hidden_field_tag :postage, 800 %>
   <%= hidden_field_tag :total_price, @claim %>
-  <%= hidden_field_tag :order_status, 1 %>
+  <%= hidden_field_tag :order_status, 0 %>
   <%= f.submit "注文を確定する", class:"btn btn-success"  %>
 <% end %>
