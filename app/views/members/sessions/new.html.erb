@@ -1,6 +1,6 @@
 <h2>Log in</h2>
-
-<%= flash[:error] %>
+<%= flash[:notice] %>
+<%= flash[:alert] %>
 
 <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
   <%= render "devise/shared/error_messages", resource: resource %>

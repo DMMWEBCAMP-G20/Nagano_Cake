@@ -5,7 +5,10 @@ before_action :configure_permitted_parameters, if: :devise_controller?
   	case resource
   	when Admin
     	admin_top_path
-  	end
+
+    when Member
+      root_path
+    end
 		end
 
   def after_sign_out_path_for(resource)
