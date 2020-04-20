@@ -7,10 +7,6 @@
 				<p>注文情報</p>
 				<table class="table table-striped">
 					<tr>
-						<th></th>
-						<th></th>
-					</tr>
-					<tr>
 						<th>注文日</th>
 						<td><%= @order.created_at %></td>
 					</tr>
@@ -61,12 +57,14 @@
 						</tr>
 					</thead>
 					<tbody>
-						<% @order.order_products.each do |order_product| %>
-						<td><%= order_product.name %></td>
-						<td><%= order_product.price %></td>
-						<td><%= order_product.quantity %></td>
-						<td><%= order_product.price * order_product.quantity %></td>
-						<% end %>
+          <% @order.order_products.each do |order_product| %>
+            <tr>
+              <td><%= order_product.name %></td>
+              <td><%= order_product.price %></td>
+              <td><%= order_product.quantity %></td>
+              <td><%= order_product.price * order_product.quantity %></td>
+            </tr>
+          <% end %>
 					</tbody>
 				</table>
 			</div>
