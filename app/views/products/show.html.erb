@@ -1,14 +1,35 @@
-<%= attachment_image_tag @product, :image, :size =>'150x120', fallback: "no_image.jpg" %>
+<div class="row doto">
+	<div class="col-xs-1"></div>
+	<div class="col-xs-2">
+		<%= form_with url: products_path, method: :get, local: true do |f| %>
+		<%= f.collection_select :i, Genre.all, :id, :name, :include_blank => "-------" %>
+		<%= f.submit "ジャンル検索" %>
+		<% end %>
+	</div>
 
-<p>商品名<%= @product.name %></p>
+	<div class="col-xs-3">
 
-<p>商品説明 <%= @product.explanatory %></p>
+		<%= attachment_image_tag @product, :image, :size =>'150x120', fallback: "no_image.jpg" %>
+	</div>
+	<div class="col-xs-5">
 
-<% taxed_price = @product.price.to_i * 1.1 %>
-<p>¥<%= taxed_price.round %>(税込)</p>
+		<div class="text">
+			<p>商品名<%= @product.name %></p>
 
-<%= form_with model: @cart_item, url: cart_items_path, local: true do |f| %>
-  <%= hidden_field_tag :product_id, @product.id %>
-  <%= f.select :quantity, [['1', 1], ['2', 2], ['3', 3], ['4', 4], ['5', 5]], { include_blank: "数量選択" } %>
-  <%= f.submit "カートに入れる" %>
-<% end %>
+			<p>商品説明 <%= @product.explanatory %></p>
+
+			<% taxed_price = @product.price.to_i * 1.1 %>
+			<p>¥<%= taxed_price.round %>(税込)</p>
+
+			<%= form_with model: @cart_item, url: cart_items_path, local: true do |f| %>
+			<%= hidden_field_tag :product_id, @product.id %>
+			<%= f.select :quantity, [['1', 1], ['2', 2], ['3', 3], ['4', 4], ['5', 5]], { include_blank: "数量選択" } %>
+			<%= f.submit "カートに入れる", class: "btn btn-primary" %>
+			<% end %>
+		</div>
+
+
+
+		<div class="col-xs-1"></div>
+	</div>
+</div>
