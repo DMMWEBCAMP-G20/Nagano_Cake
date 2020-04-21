@@ -9,6 +9,7 @@ before_action :authenticate_member!, only: [:show,:edit]
     when Member
       root_path
     end
+  end
 
   def after_sign_out_path_for(resource)
     p resource
