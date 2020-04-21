@@ -1,6 +1,87 @@
 // Place all the styles related to the admin::members controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
-.body {
-	margin-top: 50px;
+
+ /*ページネーション自体のデザイン*/
+.pagination>li>a {
+  border: none;     /*枠線をなくす*/
+  color: #696969;   /*文字の色を変える*/
 }
+
+/* 表示しているページ番号のデザイン */
+.pagination>.active>a {
+  background: #93c9ff;     /*背景の色を変える*/
+  border-radius: 15px;     /*角を丸くする*/
+}
+
+/*ホバー時のデザイン*/
+.pagination>li>a:hover {
+  border-radius: 15px;    /*角を丸くする*/
+}
+
+/*application.scss用　仮*/
+html {
+  margin: 0;
+  padding:0;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: "Yu Gothic", "游ゴシック", YuGothic, "游ゴシック体", sans-serif;
+  font-weight: 500;
+  color: #333;
+  line-height: 2.0;
+}
+
+h2,h3,h4,h5 {
+  margin: 0;
+  padding: 0;
+}
+
+ul,li,dl,dt,dd {
+  margin:0;
+  padding:0;
+  list-style: none;
+}
+
+/*members*/
+
+img {
+  width: 100%;
+  vertical-align: bottom;
+}
+
+#effectiveness {
+	background: rgba(135,206,250,0.6);
+}
+
+footer .content-wrapper {
+	width: 100%;
+   display: flex;
+   justify-content: space-between;
+   align-items: center;
+   padding: 0, 0;
+}
+
+.address p {
+   line-height: 1.8;
+}
+
+.copylight p {
+   text-align: center;
+   font-size: 0.75rem;
+   margin: 0;
+   line-height: 100px;
+   color: #333;
+   background-color: #e8e7e7;
+}
+
+.table {
+	border: 0px none;
+}
+
+
+
+
+

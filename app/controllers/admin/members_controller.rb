@@ -1,7 +1,7 @@
 class Admin::MembersController < ApplicationController
 	# before_action :authenticate_member!
   def index
-    @members = Member.page(params[:pege])
+    @members = Member.page(params[:page]).per(10)
   end
 
   def show
