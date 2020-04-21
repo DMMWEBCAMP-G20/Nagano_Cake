@@ -1,24 +1,21 @@
-<h1>商品新規登録機能</h1>
-
-<%= form_with model: @product, url: admin_products_path do |f| %>
-
-  <%= f.attachment_field :image %>
-
-	<h4>商品名</h4>
-	<%= f.text_field :name %>
-
-	<h4>商品説明</h4>
-	<%= f.text_area :explanatory %>
-
-	<h4>ジャンル</h4>
-  <%= f.collection_select :genre_id, @genres, :id, :name, {include_blank: "---"} %>
-
-	<h4>値段</h4>
-	<%= f.text_field :price %>
-
-	<h4>販売ステータス</h4>
-  <%= f.select :is_sales_status, Product.is_sales_statuses.keys.map {|k| [I18n.t("enums.product.is_sales_status.#{k}"), k]} %>
-
-	<%= f.submit '新規登録' %>
-
-<% end %>
+<div class="row">
+  <div class="col-xs-1"></div>
+  <div class="col-xs-10">
+    <h3 class="admin-products-title">商品新規登録画面</h3>
+    <%= form_with model: @product, url: admin_products_path do |f| %>
+      <%= f.attachment_field :image %>
+      <h4>商品名</h4>
+      <%= f.text_field :name, class: "form-control" %>
+      <h4>商品説明</h4>
+      <%= f.text_area :explanatory, class: "form-control" %>
+      <h4>ジャンル</h4>
+      <%= f.collection_select :genre_id, @genres, :id, :name, {include_blank: "---"} %>
+      <h4>値段</h4>
+      <%= f.text_field :price, class: "form-control" %>
+      <h4>販売ステータス</h4>
+      <%= f.select :is_sales_status, Product.is_sales_statuses.keys.map {|k| [I18n.t("enums.product.is_sales_status.#{k}"), k]} %><br>
+      <%= f.submit '新規登録', class: "btn btn-info btn-lg btn-block admin-products-create" %>
+    <% end %>
+  </div>
+  <div class="col-xs-1"></div>
+</div>

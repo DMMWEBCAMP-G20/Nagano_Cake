@@ -17,4 +17,12 @@ class Member < ApplicationRecord
   def active_for_authentication?
     super && self.is_active == 'enable'
   end
+
+  def Member.search(search, member_or_product)
+      if member_or_product == "1"
+        Member.where(['first_name LIKE ?', "%#{search}%"])
+      else
+        Member.all
+      end
+  end
 end

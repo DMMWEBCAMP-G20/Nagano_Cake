@@ -1,23 +1,29 @@
-<h1>注文情報入力</h1>
+<div class="row">
+  <div class="col-xs-1"></div>
+  <div class="col-xs-10">
+    <h3 class="orders-title">注文情報入力</h3>
 
-<%= form_with model: @order, url: {action: 'confirm'}, local: true do |f| %>
+    <%= form_with model: @order, url: {action: 'confirm'}, local: true do |f| %>
 
-  <h3>支払い方法</h3>
-  <label><%= f.radio_button :pay_type, :"クレジットカード" %>クレジットカード</label><br>
-  <label><%= f.radio_button :pay_type, :"銀行振り込み" %>銀行振り込み</label>
+      <h4>【支払い方法】</h4>
+      <p><label><%= f.radio_button :pay_type, :"クレジットカード" %> クレジットカード</label></p>
+      <p><label><%= f.radio_button :pay_type, :"銀行振り込み" %> 銀行振り込み</label></p>
 
-  <h3>お届け先</h3>
-  <p><label><%= f.radio_button :delivery, 1 %>ご自身の住所</label></p>
-  <%= current_member.postal_code + current_member.address %><br>
-  <%= current_member.first_name + current_member.last_name %>
+      <h4 class="orders-subtitle">【お届け先】</h4>
+      <p><label><%= f.radio_button :delivery, 1 %> ご自身の住所</label></p>
+      <%= current_member.postal_code + current_member.address %><br>
+      <p><%= current_member.first_name + current_member.last_name %></p>
 
-  <p><label><%= f.radio_button :delivery, 2 %>登録住所から選択</label></p>
-  <%= f.collection_select :sub_delivery, current_member.deliveries, :id, :full_address, include_blank: true %>
+      <p><label><%= f.radio_button :delivery, 2 %> 登録住所から選択</label></p>
+      <p><%= f.collection_select :sub_delivery, current_member.deliveries, :id, :full_address, include_blank: "-----" %></p>
 
-  <p><label><%= f.radio_button :delivery, 3 %>新しいお届け先</label></p>
-  郵便番号(ハイフンなし)<%= f.text_field :postal_code %><br>
-  住所<%= f.text_field :address %><br>
-  宛名<%= f.text_field :name %>
+      <p><label><%= f.radio_button :delivery, 3 %> 新しいお届け先</label></p>
+      郵便番号(ハイフン無)<%= f.text_field :postal_code, placeholder: "例) 1511153", class: "form-control" %><br>
+      住所<%= f.text_field :address, placeholder: "例) 東京都 渋谷区 代々木 神園町 12-34", class: "form-control" %><br>
+      宛名<%= f.text_field :name, placeholder: "例) 田中 太郎", class: "form-control" %>
 
-  <p><%= f.submit "確認画面へ進む", class:"btn btn-info" %></p>
-<% end %>
+      <p class="orders-nextbutton"><%= f.submit "確認画面へ進む", class:"btn btn-info btn-lg" %></p>
+    <% end %>
+  </div>
+  <div class="col-xs-1"></div>
+</div>

@@ -1,16 +1,19 @@
-<h1>商品詳細画面</h1>
-
-<%= attachment_image_tag @product, :image, :size =>'150x120', fallback: "no_image.jpg" %>
-
-<p>商品名<%= @product.name %></p>
-
-<p>商品説明 <%= @product.explanatory %></p>
-
-<p>ジャンル <%= @product.genre.name %></p>
-
-<% taxed_price = @product.price.to_i * 1.1 %>
-<p>税込価格(税抜価格)   <%= taxed_price.round %>(<%= @product.price %>)円</p>
-
-<p>販売ステータス<%= @product.is_sales_status_i18n %></p>
-
-<%= link_to "編集する", edit_admin_product_path(@product) %>
+<div class="row">
+  <div class="col-xs-4"></div>
+  <div class="col-xs-4">
+    <h3 class="admin-products-title">商品詳細画面</h3>
+    <div class="thumbnail">
+      <%= attachment_image_tag @product, :image, :size =>'150x120', fallback: "no_image.jpg" %>
+      <div class="caption">
+        <p>【商品名】<span class="admin-products-text"><%= @product.name %></span></p>
+        <p>【商品説明】<span class="admin-products-text"><%= @product.explanatory %></span></p>
+        <p>【ジャンル】<span class="admin-products-text"><%= @product.genre.name %></span></p>
+        <% taxed_price = @product.price.to_i * 1.1 %>
+        <p>【税込価格(税抜価格)】<span class="admin-products-text"><%= taxed_price.round.to_s(:delimited) %> (<%= @product.price.to_s(:delimited) %>)円</span></p>
+        <p>【販売ステータス】<span class="admin-products-text"><%= @product.is_sales_status_i18n %></span></p>
+      </div>
+    </div>
+    <div class=" admin-products-editbutton"><%= link_to "編集する", edit_admin_product_path(@product), class: "btn btn-primary" %></div>
+  </div>
+  <div class="col-xs-4"></div>
+</div>

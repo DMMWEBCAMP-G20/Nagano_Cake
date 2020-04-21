@@ -15,7 +15,7 @@ class Admin::ProductsController < ApplicationController
   end
 
   def index
-    @products = Product.all
+    @products = Product.page(params[:page]).per(10)
   end
 
   def show
@@ -27,12 +27,21 @@ class Admin::ProductsController < ApplicationController
     @genres = Genre.all
   end
 
-    def update
+  def update
     @product = Product.find(params[:id])
     if @product.update(product_params)
       redirect_to admin_product_path(@product)
     else
       render :edit
+    end
+  end
+
+  def search
+    @member_or_product = params[:option]
+    if @member_or_product == "1"
+      @members = Member.search(params[:search], @member_or_product)
+    else
+      @products = Product.search(params[:search], @member_or_product)
     end
   end
 

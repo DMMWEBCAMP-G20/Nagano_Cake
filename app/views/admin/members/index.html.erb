@@ -1,33 +1,52 @@
-<div class="body">
-	<div class="container">
-		<div class="row">
-			<div class="col-xs-3">
-				<h4>会員一覧画面</h4>
-			</div>
-			<div class="col-xs-6">
-				<table class="table table-striped">
-					<thead>
-						<tr>
-							<th>会員ID</th>
-							<th>氏名</th>
-							<th>メールアドレス</th>
-							<th>ステータス</th>
-						</tr>
-					</thead>
-					<tbody>
-						<% @members.each do |member| %>
-							<tr>
-								<td><%= member.id %></td>
-								<td><%= link_to member.full_name, admin_member_path(member.id) %></td>
-								<td><%= member.email %></td>
-								<td><%= member.is_active_i18n %></td>
-							</tr>
-						<% end %>
-					</tbody>
-				</table>
-				<%= paginate @members, class: "paginate" %>
-			</div>
-			<div class="col-xs-3"></div>
+<div class="row">
+	<div class="col-xs-1"></div>
+	<div class="col-xs-2">
+		<h3>会員一覧画面</h>
 		</div>
 	</div>
+	<div class="row">
+<!-- <section class="admin_member_visual">
+<%= image_tag 'admin_members1.jpg' %>
+</section> -->
+<div class="col-xs-3"></div>
+<div class="col-xs-6">
+	<table class="table">
+		<thead>
+			<tr class="active">
+				<th>会員ID</th>
+				<th>氏名</th>
+				<th>メールアドレス</th>
+				<th>ステータス</th>
+			</tr>
+		</thead>
+		<tbody>
+			<% @members.each do |member| %>
+			<tr>
+				<td><%= member.id %></td>
+				<td><%= link_to member.full_name, admin_member_path(member.id) %></td>
+				<td><%= member.email %></td>
+				<td><%= member.is_active_i18n %></td>
+			</tr>
+			<% end %>
+		</tbody>
+	</table>
+	<%= paginate @members, class: "paginate" %>
 </div>
+<div class="col-xs-3"></div>
+</div>
+<!-- <footer class="footer">
+   <div class="content-wrapper">
+	   <div class="address">
+	     <p>
+	     	G20<br>
+	     	2520 Massachusetts Avenue NW, Washington, D.C. 20008-2869, U.S.A.  <br>
+	      TEL 01-2345-6789 <br>
+	      FAX 01-2345-6789
+	     </p>
+	   </div>
+   </div>
+   <div class="copylight">
+   <p>©️ G20., Ltd. All Rights Reserved.</p>
+ </div>
+ </footer>
+ -->
