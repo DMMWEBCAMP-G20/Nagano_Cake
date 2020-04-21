@@ -1,24 +1,33 @@
-<h1>商品一覧画面</h1>
-
-<table class="table">
-	<tr>
-		<th>商品ID</th>
-		<th>商品名</th>
-		<th>税抜き価格</th>
-		<th>ジャンル</th>
-		<th>ステータス</th>
-	</tr>
-    <tbody>
-      <% @products.each do |product| %>
-        <tr>
-          <td><%= product.id %></td>
-          <td><%= link_to product.name, admin_product_path(product) %></td>
-          <td><%= product.price %></td>
-          <td><%= product.genre.name %></td>
-          <td><%= product.is_sales_status_i18n %></td>
+<div class="row">
+  <div class="col-xs-1"></div>
+  <div class="col-xs-10">
+    <h3 class="admin-products-title">商品一覧画面</h3>
+    <div class="admin-products-new"><%= link_to '', new_admin_product_path, class: "glyphicon glyphicon-plus-sign admin-products-icon" %></div>
+    <table class="table table-hover admin-products-table">
+      <thead>
+        <tr class="success">
+          <th>商品ID</th>
+          <th>商品名</th>
+          <th>税抜き価格</th>
+          <th>ジャンル</th>
+          <th>ステータス</th>
         </tr>
-      <% end %>
-    </tbody>
-  </table>
-  <%= link_to '新規登録', new_admin_product_path, class: "btn btn-success" %>
+      </thead>
+      <tbody>
+        <% @products.each do |product| %>
+          <tr>
+            <td><%= product.id %></td>
+            <td><%= link_to product.name, admin_product_path(product) %></td>
+            <td><%= product.price.to_s(:delimited) %></td>
+            <td><%= product.genre.name %></td>
+            <td><%= product.is_sales_status_i18n %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+    <div class="admin-products-paginate"><%= paginate @products, class: "paginate" %></div>
+  </div>
+  <div class="col-xs-1"></div>
+</div>
+
 

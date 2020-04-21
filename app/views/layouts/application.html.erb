@@ -41,6 +41,21 @@
               <li><%= link_to "商品一覧", products_path %></li>
               <li><%= link_to "新規登録", new_member_registration_path %></li>
               <li><%= link_to "ログイン", new_member_session_path %></li>
+              <li>
+                <%= form_tag admin_search_path, method: :get do %>
+                  <div class="row">
+                    <div class="col-xs-6">
+                      <%= text_field_tag :search, '', placeholder: "会員名 or 商品名", class: "form-control search-form" %>
+                    </div>
+                    <div class="col-xs-2">
+                      <%= select_tag(:option, options_for_select([["会員", "1"],["商品","2"]]), class: "search-pulldown")%>
+                    </div>
+                    <div class="col-xs-4">
+                      <%= submit_tag '検索', class: "btn btn-primary search-button" %>
+                    </div>
+                    </div>
+                  <% end %>
+              </li>
             <% end %>
               <% if admin_signed_in? %>
                 <li><%= link_to "ログアウト", destroy_admin_session_path, method: :delete %></li>
@@ -50,6 +65,8 @@
         </div>
       </div>
     </nav>
-		<%= yield %>
+    <div class="container">
+      <%= yield %>
+    </div>
   </body>
 </html>
