@@ -1,3 +1,48 @@
 // Place all the styles related to the products controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.index h3{
+  margin-bottom: 20px;
+  color:red;
+
+}
+
+.index {
+
+	margin: 20px;
+	display: flex;
+	background-color:  #FFDDFF;
+}
+
+.image {
+	margin: 15px;
+}
+
+.product {
+	margin-right: 20px;
+}
+
+.doto {
+	background-image: url(images.jpg);
+	display: inline-block;
+	height: 500px;
+	padding: 50px;
+}
+
+.text {
+	display: inline-block;
+	float: right;
+}
+
+.caption {
+}
+
+.thumbnail product {
+	display: inline-block;
+}
+
+.brick {
+	background-image: url(20848613.jpg);
+}
+
