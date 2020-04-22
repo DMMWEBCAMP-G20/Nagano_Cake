@@ -1,4 +1,6 @@
 class OrderProductsController < ApplicationController
+  before_action :authenticate_member!
+
 	def index
 		@order_products = OrderProduct.all
 	end

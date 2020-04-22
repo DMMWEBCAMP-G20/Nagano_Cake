@@ -1,4 +1,6 @@
 class CartItemsController < ApplicationController
+  before_action :authenticate_member!
+
   def create
     product = Product.find(params[:product_id])
     cart_item = CartItem.find_by(product_id: product.id)
