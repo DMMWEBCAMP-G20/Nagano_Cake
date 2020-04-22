@@ -14,6 +14,11 @@
  *= require_self
  */
 
+.container {
+  width: 100%;
+  height: 1000px; 
+}
+
  @import "bootstrap-sprockets";
  @import "bootstrap";
 
@@ -132,8 +137,8 @@
 
 
 footer .content-wrapper {
-  position: relative;
-  bottom: -150px;
+  // position: relative;
+  // bottom: -150px;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -155,8 +160,8 @@ footer .text li {
 
 
 .copylight p {
-  position: absolute;
-  bottom: 0;
+  // position: absolute;
+  // bottom: 0;
   width: 100%;
   text-align: center;
   font-size: 0.75rem;
