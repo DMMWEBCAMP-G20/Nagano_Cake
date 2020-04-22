@@ -15,7 +15,7 @@
       <p><%= current_member.first_name + current_member.last_name %></p>
 
       <p><label><%= f.radio_button :delivery, 2 %> 登録住所から選択</label></p>
-      <p><%= f.collection_select :sub_delivery, current_member.deliveries, :id, :full_address, include_blank: "-----" %></p>
+      <p><%= f.collection_select :sub_delivery, current_member.deliveries, :id, :full_address, {include_blank: true}, {class: "form-control"} %></p>
 
       <p><label><%= f.radio_button :delivery, 3 %> 新しいお届け先</label></p>
       郵便番号(ハイフン無)<%= f.text_field :postal_code, placeholder: "例) 1511153", class: "form-control" %><br>
