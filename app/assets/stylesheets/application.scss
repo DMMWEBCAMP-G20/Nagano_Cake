@@ -15,7 +15,7 @@
  */
  @import "bootstrap-sprockets";
  @import "bootstrap";
- @import 'bootstrap-select';
+
 
 .admin-loginbutton {
   margin-top: 30px;
@@ -123,4 +123,45 @@
   color: #fff;
   text-decoration: none;
   font-weight: bold;
+}
+
+
+/* -------------footer------------ */
+
+
+
+
+footer .content-wrapper {
+  position: relative;
+  bottom: -150px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 20px;
+}
+
+.address p {
+   line-height: 1.8;
+}
+
+footer .text {
+   display: flex;
+   margin-top: 50px;
+}
+
+footer .text li {
+   margin-right: 50px;
+}
+
+
+.copylight p {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  text-align: center;
+  font-size: 0.75rem;
+  margin: 0;
+  line-height: 60px;
+  color: #333;
+  background-color: #e8e7e7;
 }
