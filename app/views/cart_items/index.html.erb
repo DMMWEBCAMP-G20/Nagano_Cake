@@ -59,11 +59,11 @@
             <td>
               <% @total_price = 0 %>
               <% @cart_items.each do |cart_item| %>
-              <% @total_price += cart_item.product.price * cart_item.quantity %>
-              <% taxed_total_price = @total_price * 1.1 %>
-              <% @sum = taxed_total_price.round %>
+                <% @total_price += cart_item.product.price * cart_item.quantity %>
+                <% taxed_total_price = @total_price * 1.1 %>
+                <% @sum = taxed_total_price.round.to_s(:delimited) %>
               <% end %>
-              <%= @sum.to_s(:delimited) %>
+              <%= @sum %>
             </td>
           </tr>
       </tbody>

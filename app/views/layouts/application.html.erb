@@ -4,7 +4,7 @@
     <title>NaganoCake</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-    <!-- コード追加　Bootstrap CSS読み込みコード-->
+    <!-- コード追加 Bootstrap CSS読み込みコード-->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
@@ -12,60 +12,45 @@
   </head>
 
   <body>
-    <nav class="navbar navbar-default">
-      <div class="container-fluid">
-        <div class="navbar-header">
-          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbarEexample1">
-            <span class="sr-only">Toggle navigation</span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </button>
-          <a class="navbar-brand" href="#">ながのケーキ</a>
-        </div>
+    <%= form_tag admin_search_path, method: :get do %>
+      <%= text_field_tag :search, '', placeholder: "会員名 or 商品名", class: "form-control search-form" %>
+      <%= select_tag(:option, options_for_select([["会員", "1"],["商品","2"]]), class: "search-pulldown")%>
+      <%= submit_tag '検索', class: "btn btn-primary search-button" %>
+    <% end %>
+    <div id="sp-menu">
+      <h2>G20</h2>
+      <ul>
+        <% if member_signed_in? %>
+          <li>ようこそ <%= current_member.full_name %> さん !</li>
+          <li><%= link_to "マイページ", member_path(current_member) %></li>
+          <li><%= link_to "商品一覧", products_path %></li>
+          <li><%= link_to "カート", cart_items_path %></li>
+          <li><%= link_to "ログアウト", destroy_member_session_path, method: :delete %></li>
+        <% elsif admin_signed_in? %>
+          <li><%= link_to "商品一覧", admin_products_path %></li>
+          <li><%= link_to "会員一覧", admin_members_path %></li>
+          <li><%= link_to "注文履歴一覧", admin_orders_path %></li>
+          <li><%= link_to "ジャンル管理", genres_path %></li>
+          <li><%= link_to "ログアウト", destroy_admin_session_path, method: :delete %></li>
+        <% else %>
+          <% unless request.path.include?("admins/sign_in") %>
+            <li><%= link_to "商品一覧", products_path %></li>
+            <li><%= link_to "新規登録", new_member_registration_path %></li>
+            <li><%= link_to "ログイン", new_member_session_path %></li>
+          <% end %>
+        <% end %>
+      </ul>
+    </div>
 
-        <div class="collapse navbar-collapse" id="navbarEexample1">
-          <ul class="nav navbar-nav navbar-right">
-            <% if member_signed_in? %>
-              <p class="navbar-text">ようこそ <%= current_member.full_name %> さん !</p>
-              <li><%= link_to "マイページ", member_path(current_member) %></li>
-              <li><%= link_to "商品一覧", products_path %></li>
-              <li><%= link_to "カート", cart_items_path %></li>
-              <li><%= link_to "ログアウト", destroy_member_session_path, method: :delete %></li>
-            <% elsif admin_signed_in? %>
-              <li><%= link_to "商品一覧", products_path %></li>
-              <li><%= link_to "会員一覧", admin_members_path %></li>
-              <li><%= link_to "注文履歴一覧", admin_orders_path %></li>
-              <li><%= link_to "ジャンル管理", genres_path %></li>
-              <li><%= link_to "ログアウト", destroy_admin_session_path, method: :delete %></li>
-              <li>
-                <%= form_tag admin_search_path, method: :get do %>
-                  <div class="row">
-                    <div class="col-xs-6">
-                      <%= text_field_tag :search, '', placeholder: "会員名 or 商品名", class: "form-control search-form" %>
-                    </div>
-                    <div class="col-xs-2">
-                      <%= select_tag(:option, options_for_select([["会員", "1"],["商品","2"]]), class: "search-pulldown")%>
-                    </div>
-                    <div class="col-xs-4">
-                      <%= submit_tag '検索', class: "btn btn-primary search-button" %>
-                    </div>
-                  </div>
-                <% end %>
-              </li>
-            <% else %>
-              <% unless request.path.include?("admins/sign_in") %>
-              <li><%= link_to "商品一覧", products_path %></li>
-              <li><%= link_to "新規登録", new_member_registration_path %></li>
-              <li><%= link_to "ログイン", new_member_session_path %></li>
-              <% end %>
-            <% end %>
-          </ul>
-        </div>
-      </div>
-    </nav>
+    <div id="hm-icon">
+      <a class="menu-trigger" href="#">
+        <span></span>
+        <span></span>
+        <span></span>
+      </a>
+    </div>
     <div class="container">
-		<%= yield %>
-  </div>
+      <%= yield %>
+    </div>
   </body>
 </html>
