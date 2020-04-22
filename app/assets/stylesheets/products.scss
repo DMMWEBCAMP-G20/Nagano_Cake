@@ -2,47 +2,25 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-.index h3{
-  margin-bottom: 20px;
-  color:red;
-
+.genre {
+	margin-top: 50px;
 }
 
-.index {
-
-	margin: 20px;
-	display: flex;
-	background-color:  #FFDDFF;
+.product-items {
+	float: left;
+  // margin: 5px;
+  padding: 10px;
 }
 
-.image {
-	margin: 15px;
+.clearfix::after{
+	content:"";
+	display: block;
+	clear: both;
 }
 
-.product {
-	margin-right: 20px;
+.pagi {
+	width: 100%;
+	text-align:center;
 }
 
-.doto {
-	background-image: url(images.jpg);
-	display: inline-block;
-	height: 500px;
-	padding: 50px;
-}
-
-.text {
-	display: inline-block;
-	float: right;
-}
-
-.caption {
-}
-
-.thumbnail product {
-	display: inline-block;
-}
-
-.brick {
-	background-image: url(20848613.jpg);
-}
 

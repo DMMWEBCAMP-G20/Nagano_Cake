@@ -1,33 +1,26 @@
-<div class="row brick">
+<div class="row">
     <div class="col-xs-1"></div>
-    <div class="col-xs-2">
-      <%= form_with url: products_path, method: :get, local: true do |f| %>
-      <%= f.collection_select :i, Genre.all, :id, :name, :include_blank => "-------" %>
-      <%= f.submit "ジャンル検索" %>
-      <% end %>
-    </div>
-    <div class="col-xs-8">
-
-      <h3>商品一覧</h3>
-      <div class="index">
-
-        <% @products.each do |product| %>
-        <div class="thumbnail product">
-          <%= link_to product_path(product) do %>
-          <%= attachment_image_tag product, :image, :fill =>'150x150', fallback: "no_image.jpg" , class:"image" %>
-          <% end %>
-          <div class="caption">
-            <p><%= product.name %></p>
-
-            <p><%= product.price %></p>
-          </div>
-        </div>
+    <div class="genre">
+      <div class="col-xs-2">
+        <%= form_with url: products_path, method: :get, local: true do |f| %>
+        <%= f.collection_select :i, Genre.all, :id, :name, :include_blank => "-------" %>
+        <%= f.submit "ジャンル検索" %>
         <% end %>
       </div>
-
     </div>
-    <div class="col-xs-1"></div>
-
+    <div class="col-xs-9">
+      <h3>商品一覧</h3>
+      <% @products.each do |product| %>
+      <div class="product-items clearfix">
+                <p><%= link_to product_path(product) do %>
+                <%= attachment_image_tag product, :image, :fill, 150, 100, fallback: "no_image.jpg" %>
+                <% end %><p>
+                <p><%= product.name %></p>
+                <p><%= number_to_currency(product.price, :format => "%u%n", :unit => "￥") %></p>
+      </div>
+      <% end %>
+    </div>
 </div>
-
-<%= link_to "商品一覧", products_path, class: "btn btn-success btn-block" %>
+<div class="pagi">
+  <%= paginate @products, class: "paginate" %>
+</div>
