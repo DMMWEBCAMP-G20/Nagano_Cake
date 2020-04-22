@@ -24,18 +24,12 @@ class OrdersController < ApplicationController
     if address == 1
       @order.postal_code = current_member.postal_code
       @order.address = current_member.address
-      @order.name = current_member.first_name
+      @order.name = current_member.full_name
     elsif address == 2
       @order.postal_code = delivery.postal_code
       @order.address = delivery.address
       @order.name = delivery.name
     elsif address == 3
-      new_delivery = Delivery.new
-      new_delivery.member_id = current_member.id
-      new_delivery.postal_code = params[:order][:postal_code]
-      new_delivery.address = params[:order][:address]
-      new_delivery.name = params[:order][:name]
-      new_delivery.save
     end
   end
 
@@ -47,6 +41,13 @@ class OrdersController < ApplicationController
     order.order_status = params[:order_status].to_i
     order.save
 
+    new_delivery = Delivery.new
+    new_delivery.member_id = current_member.id
+    new_delivery.postal_code = params[:order][:postal_code]
+    new_delivery.address = params[:order][:address]
+    new_delivery.name = params[:order][:name]
+    new_delivery.save
+
     current_member.cart_items.each do |cart_item|
       order_product = OrderProduct.new
       order_product.name = cart_item.product.name
@@ -55,9 +56,7 @@ class OrdersController < ApplicationController
       order_product.product_id = cart_item.product.id
       order_product.order_id = order.id
       order_product.production_status = 0
-
       order_product.save
-
     end
 
     current_member.cart_items.destroy_all
